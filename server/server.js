@@ -8,33 +8,12 @@ dotenv.config();
 
 const app = express();
 
-// ✅ CORS setup
-const allowedOrigins = [
-  "http://localhost:3000",
-  "http://localhost:3001",
-  "https://notex-frontend.netlify.app" // <-- change to your Netlify URL
-];
-
+// ✅ CORS setup - Allow all origins (no restrictions)
 app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps, Postman, or curl requests)
-    if (!origin) return callback(null, true);
-    
-    // Check if origin is in allowed list
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      // Log for debugging (remove in production)
-      console.log(`CORS blocked origin: ${origin}`);
-      callback(new Error("CORS not allowed for this origin"));
-    }
-  },
+  origin: true, // Allow all origins
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
   allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Accept"],
-  exposedHeaders: ["Content-Range", "X-Content-Range"],
-  credentials: true,
-  preflightContinue: false,
-  optionsSuccessStatus: 204
+  credentials: true
 }));
 
 // Middleware
