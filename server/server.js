@@ -8,8 +8,25 @@ dotenv.config();
 
 const app = express();
 
+// ✅ CORS setup
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://notex-frontend.netlify.app" // <-- change to your Netlify URL
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS not allowed for this origin"));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 // Middleware
-app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -26,16 +43,14 @@ app.get('/api/health', (req, res) => {
   res.json({ message: 'NoteX API is running' });
 });
 
-// Connect to MongoDB
+// MongoDB Connection
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/notex';
 
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
-.then(() => {
-  console.log('✅ Connected to MongoDB');
-})
+.then(() => console.log('✅ Connected to MongoDB'))
 .catch((error) => {
   console.error('❌ MongoDB connection error:', error);
   process.exit(1);
@@ -54,4 +69,3 @@ app.use((err, req, res, next) => {
 });
 
 module.exports = app;
-
