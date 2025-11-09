@@ -1,0 +1,19 @@
+.App {
+  min-height: 100vh;
+  background-color: #0f0f0f;
+}
+
+/* Page Container */
+.page-container {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 10px;
+  }
+}
+

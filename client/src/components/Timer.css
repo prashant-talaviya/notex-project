@@ -1,0 +1,48 @@
+.timer {
+  text-align: center;
+}
+
+.timer-display {
+  margin: 30px 0;
+}
+
+.timer-time {
+  font-size: 48px;
+  font-weight: 700;
+  color: #667eea;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+.timer-controls {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.timer-controls .btn {
+  min-width: 100px;
+}
+
+.timer-info {
+  color: #999;
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .timer-time {
+    font-size: 36px;
+  }
+
+  .timer-controls {
+    flex-direction: column;
+  }
+
+  .timer-controls .btn {
+    width: 100%;
+  }
+}
+

@@ -1,0 +1,68 @@
+.recent-notes {
+  min-height: 400px;
+}
+
+.recent-notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.recent-note-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #0b0b0b;
+  border: 1px solid #333;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  gap: 15px;
+}
+
+.recent-note-item:hover {
+  border-color: #667eea;
+  background: #1a1a1a;
+  transform: translateX(5px);
+}
+
+.recent-note-content {
+  flex: 1;
+}
+
+.recent-note-content h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #f0f0f0;
+}
+
+.recent-note-content p {
+  color: #999;
+  font-size: 14px;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.recent-note-date {
+  color: #666;
+  font-size: 12px;
+}
+
+.recent-note-item .btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .recent-note-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .recent-note-item .btn {
+    width: 100%;
+  }
+}
+
