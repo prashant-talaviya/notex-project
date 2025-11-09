@@ -1,0 +1,13 @@
+# Source - https://stackoverflow.com/a
+# Posted by nativelectronic
+# Retrieved 2025-11-10, License - CC BY-SA 4.0
+
+[build]
+  command = "CI='' npm run build"
+  publish = "/build"
+  base ="/"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
